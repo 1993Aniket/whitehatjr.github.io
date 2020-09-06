@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <title>whitejr Assignment</title>
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+   </head>
+   <body>
+      <div class="progress">
+            <h2> 60 sec Countdown Timer</h2>
+         <svg class="progress-circle" width="250px" height="250px">
+            <text class="progress-text" id="timer-text" stroke="blue" text-anchor="middle" alignment-baseline="central">60</text>
+            <circle  class="progress-circle-big" cx="125" cy="125" r="70"></circle>
+            <circle class="progress-circle-small" cx="125" cy="125" r="70"></circle>
+         </svg>
+         <!-- <span class="progress-text" id="timer-text">60</span> -->
+      </div>
+      <div class="btn_position">
+         <button type="button" id="btn-start">START</button>
+         <button type="button" id="btn-reset">RESET</button>
+      </div>
+   </body>
+   <script type="text/javascript">
+      const timertext = document.getElementById('timer-text');  
+      const start = document.getElementById('btn-start');
+      const reset = document.getElementById('btn-reset');
+      
+      
+      let interval;
+      
+      
+      start.addEventListener("click" , function(){
+
+          let count =60;
+      interval= setInterval(function(){
+      
+        if(count <=0)
+        {
+          clearInterval(interval);
+      timertext.textContent= "0";
+      //clearInterval(interval);
+        }
+        else{
+      
+          timertext.textContent= count;
+        }
+        count -= 1;
+      
+      
+      //console.log(count);
+      
+          } ,1000);
+      })
+      
+      reset.addEventListener("click" , function(){
+        clearInterval(interval);
+          timertext.textContent= "60";
+      });
+      
+   </script>
